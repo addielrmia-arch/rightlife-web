@@ -4087,5 +4087,23 @@
     </div>
     <!-- Start of bodyEnd -->
     <!-- End of bodyEnd -->
-  </body>
+  <script>
+(function() {
+  function replaceLogo() {
+    document.querySelectorAll('.framer-h0eY4').forEach(function(img) {
+      if (img.src !== window.location.origin + '/rightlife-web/logo.png') {
+        img.src = 'logo.png';
+        img.style.height = '36px';
+        img.style.width = 'auto';
+        img.style.objectFit = 'contain';
+      }
+    });
+  }
+  var observer = new MutationObserver(replaceLogo);
+  observer.observe(document.body, { childList: true, subtree: true });
+  window.addEventListener('load', replaceLogo);
+  setTimeout(replaceLogo, 500);
+  setTimeout(replaceLogo, 1500);
+})();
+</script></body>
 </html>
