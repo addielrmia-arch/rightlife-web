@@ -629,12 +629,21 @@
       display: block;
     }
     .cat-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,.12); }
-    .cat-card.c1 { background: linear-gradient(135deg, #1e3a8a, #2563eb); }
-    .cat-card.c2 { background: linear-gradient(135deg, #0369a1, #0ea5e9); }
-    .cat-card.c3 { background: linear-gradient(135deg, #1e40af, #3b82f6); }
-    .cat-card.c4 { background: linear-gradient(135deg, #312e81, #4f46e5); }
-    .cat-card.c5 { background: linear-gradient(135deg, #0c4a6e, #0284c7); }
-    .cat-card.c6 { background: linear-gradient(135deg, #1d4ed8, #60a5fa); }
+    .cat-card.c1 { background-image: url('cat-hornos.png'); background-size: cover; background-position: center; }
+    .cat-card.c2 { background-image: url('cat-refrigeracion.png'); background-size: cover; background-position: center; }
+    .cat-card.c3 { background-image: url('cat-preparacion.png'); background-size: cover; background-position: center; }
+    .cat-card.c4 { background-image: url('cat-cocinas.png'); background-size: cover; background-position: center; }
+    .cat-card.c5 { background-image: url('cat-panaderia.png'); background-size: cover; background-position: center; }
+    .cat-card.c6 { background-image: url('cat-vajilla.png'); background-size: cover; background-position: center; }
+    .cat-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,20,60,0.85) 40%, rgba(10,20,60,0.4) 100%);
+      border-radius: inherit;
+      z-index: 0;
+    }
+    .cat-card > * { position: relative; z-index: 1; }
     .cat-card-bg-shape {
       position: absolute;
       width: 180px; height: 180px;
