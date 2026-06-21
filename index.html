@@ -484,7 +484,16 @@
     }
 
     /* ─── PRODUCTS ─── */
-    .products { background: var(--blue-50); }
+    .products { background: var(--blue-50); position: relative; }
+    .products::after {
+      content: '';
+      display: block;
+      position: absolute;
+      bottom: -1px; left: 0; right: 0;
+      height: 80px;
+      background: var(--white);
+      clip-path: ellipse(55% 100% at 50% 100%);
+    }
     .products-carousel-wrap {
       position: relative;
     }
