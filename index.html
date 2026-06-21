@@ -443,6 +443,36 @@
 
     /* ─── FEATURES ─── */
     .features { background: var(--white); }
+    .parallax-divider {
+      position: relative;
+      height: 420px;
+      overflow: hidden;
+    }
+    .parallax-divider-img {
+      position: absolute;
+      inset: -20%;
+      background: url('parallax-divider.png') center center / cover no-repeat;
+      transform-origin: center center;
+      transition: transform .1s linear;
+      will-change: transform;
+    }
+    .parallax-divider-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(10,20,60,0.55);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .parallax-divider-overlay p {
+      color: white;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.4rem, 3vw, 2.2rem);
+      font-style: italic;
+      text-align: center;
+      padding: 0 5%;
+      letter-spacing: .5px;
+    }
     .features-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -1340,6 +1370,14 @@
   </div>
 </section>
 
+<!-- ─── PARALLAX DIVIDER ─── -->
+<div class="parallax-divider">
+  <div class="parallax-divider-img" id="parallaxDivider"></div>
+  <div class="parallax-divider-overlay">
+    <p>"Equipamos cocinas que no descansan."</p>
+  </div>
+</div>
+
 <!-- ─── HOW IT WORKS ─── -->
 <section class="how" id="proceso">
   <div class="section-inner">
@@ -1542,6 +1580,18 @@
     if (heroInner) heroInner.style.transform = `translateY(${y * 0.3}px)`;
     if (heroBg) heroBg.style.transform = `translateY(${y * 0.15}px)`;
   }, { passive: true });
+
+  // Parallax zoom divider
+  const dividerImg = document.getElementById('parallaxDivider');
+  if (dividerImg) {
+    window.addEventListener('scroll', () => {
+      const rect = dividerImg.parentElement.getBoundingClientRect();
+      const viewH = window.innerHeight;
+      const progress = 1 - (rect.top + rect.height) / (viewH + rect.height);
+      const scale = 1 + progress * 0.15;
+      dividerImg.style.transform = `scale(${scale})`;
+    }, { passive: true });
+  }
 
   // Scroll reveal animation
   const reveals = document.querySelectorAll('.reveal');
