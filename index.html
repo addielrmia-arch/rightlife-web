@@ -56,6 +56,8 @@
     }
     nav .nav-links a { color: rgba(255,255,255,0.85); transition: color .3s; }
     nav .nav-links a:hover { color: #fff; }
+    nav .nav-logo img { filter: brightness(0) invert(1); transition: filter .4s; }
+    nav.scrolled .nav-logo img { filter: none; }
     nav.scrolled {
       background: rgba(255,255,255,0.96);
       backdrop-filter: blur(16px);
