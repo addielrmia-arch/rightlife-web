@@ -642,6 +642,13 @@
       background: linear-gradient(to top, rgba(10,20,60,0.85) 40%, rgba(10,20,60,0.4) 100%);
       border-radius: inherit;
       z-index: 0;
+      transition: opacity .4s;
+    }
+    .cat-card:hover::before {
+      opacity: 0.5;
+    }
+    .cat-card:hover {
+      background-size: 110%;
     }
     .cat-card > * { position: relative; z-index: 1; }
     .cat-card-bg-shape {
