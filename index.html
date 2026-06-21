@@ -2,28 +2,7 @@
 <!-- Made in Framer · framer.com ✨ -->
 <!-- Published Mar 10, 2026, 8:17 AM UTC -->
 <html lang="en" data-redirect-timezone="1" dir="ltr">
-  <head><script>
-(function() {
-  var logoUrl = 'logo.png';
-  var svgPrefix = 'data:image/svg+xml';
-  
-  // Override Image src setter
-  var nativeDescriptor = Object.getOwnPropertyDescriptor(HTMLImageElement.prototype, 'src');
-  Object.defineProperty(HTMLImageElement.prototype, 'src', {
-    set: function(val) {
-      if (this.classList.contains('framer-h0eY4') && val && val.startsWith(svgPrefix)) {
-        nativeDescriptor.set.call(this, logoUrl);
-        this.style.height = '36px';
-        this.style.width = 'auto';
-        this.style.objectFit = 'contain';
-      } else {
-        nativeDescriptor.set.call(this, val);
-      }
-    },
-    get: nativeDescriptor.get
-  });
-})();
-</script>
+  <head>
     <meta charset="utf-8" />
     <script>
       try{if(localStorage.get(&#34;__framer_force_showing_editorbar_since&#34;)){const n=document.createElement(&#34;link&#34;);n.rel = &#34;modulepreload&#34;;n.href=&#34;https://framer.com/edit/init.mjs&#34;;document.head.appendChild(n)}}catch(e){}
@@ -176,7 +155,23 @@
     </style>
     <!-- Start of headEnd -->
     <!-- End of headEnd -->
-  </head>
+  <style>
+.framer-h0eY4 {
+  -webkit-mask: none !important;
+  mask: none !important;
+  background: none !important;
+  width: auto !important;
+  height: 36px !important;
+  aspect-ratio: unset !important;
+}
+.framer-h0eY4::before {
+  content: '' !important;
+  display: block !important;
+  background: url('logo.png') no-repeat center/contain !important;
+  width: 160px !important;
+  height: 36px !important;
+}
+</style></head>
   <body>
     <script async="" src="https://events.framer.com/script?v=2" data-fid="19e154cc339c788fc48974a7955f2e6bd2d1bd73f954ad7785eb1f7f9c49564a" data-no-nt="">
     </script>
