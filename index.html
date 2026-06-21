@@ -49,12 +49,21 @@
       justify-content: space-between;
       padding: 0 5%;
       height: 72px;
-      background: rgba(255,255,255,0.92);
+      background: transparent;
+      backdrop-filter: none;
+      border-bottom: 1px solid transparent;
+      transition: background .4s, box-shadow .4s, border-color .4s;
+    }
+    nav .nav-links a { color: rgba(255,255,255,0.85); transition: color .3s; }
+    nav .nav-links a:hover { color: #fff; }
+    nav.scrolled {
+      background: rgba(255,255,255,0.96);
       backdrop-filter: blur(16px);
       border-bottom: 1px solid rgba(30,64,175,0.08);
-      transition: box-shadow .3s;
+      box-shadow: 0 2px 24px rgba(30,64,175,.12);
     }
-    nav.scrolled { box-shadow: 0 2px 24px rgba(30,64,175,.12); }
+    nav.scrolled .nav-links a { color: var(--gray-700); }
+    nav.scrolled .nav-links a:hover { color: var(--blue-600); }
 
     .nav-logo {
       display: flex;
