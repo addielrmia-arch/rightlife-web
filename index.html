@@ -825,12 +825,35 @@
 
     /* ─── STATS ─── */
     .stats {
-      background: linear-gradient(135deg, var(--blue-900), var(--blue-700));
-      padding: 80px 5%;
+      position: relative;
+      overflow: hidden;
+      padding: 0;
+      height: 340px;
+    }
+    .stats-bg {
+      position: absolute;
+      inset: -20%;
+      background:
+        repeating-linear-gradient(90deg, rgba(255,255,255,.03) 0px, rgba(255,255,255,.03) 1px, transparent 1px, transparent 40px),
+        repeating-linear-gradient(0deg, rgba(255,255,255,.02) 0px, rgba(255,255,255,.02) 1px, transparent 1px, transparent 40px),
+        repeating-linear-gradient(45deg, rgba(255,255,255,.015) 0px, transparent 2px, transparent 20px),
+        linear-gradient(135deg, var(--blue-950) 0%, var(--blue-800) 50%, var(--blue-700) 100%);
+      transform-origin: center center;
+      will-change: transform;
+    }
+    .stats-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(10,20,60,.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
     }
     .stats-inner {
       max-width: 1200px;
-      margin: 0 auto;
+      width: 100%;
+      padding: 0 5%;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 40px;
@@ -844,13 +867,6 @@
       margin-bottom: 8px;
     }
     .stat-label { font-size: .92rem; color: rgba(255,255,255,.6); }
-    .stat-divider {
-      width: 1px;
-      background: rgba(255,255,255,.15);
-      height: 60px;
-      margin: auto;
-      display: none;
-    }
 
     /* ─── CTA ─── */
     .cta-section {
@@ -1540,22 +1556,25 @@
 
 <!-- ─── STATS ─── -->
 <section class="stats">
-  <div class="stats-inner">
-    <div class="reveal">
-      <div class="stat-num">12,000+</div>
-      <div class="stat-label">Clientes satisfechos</div>
-    </div>
-    <div class="reveal">
-      <div class="stat-num">15</div>
-      <div class="stat-label">Años en el mercado</div>
-    </div>
-    <div class="reveal">
-      <div class="stat-num">800+</div>
-      <div class="stat-label">Productos disponibles</div>
-    </div>
-    <div class="reveal">
-      <div class="stat-num">98%</div>
-      <div class="stat-label">Índice de satisfacción</div>
+  <div class="stats-bg" id="statsBg"></div>
+  <div class="stats-overlay">
+    <div class="stats-inner">
+      <div class="reveal">
+        <div class="stat-num">12,000+</div>
+        <div class="stat-label">Clientes satisfechos</div>
+      </div>
+      <div class="reveal">
+        <div class="stat-num">15</div>
+        <div class="stat-label">Años en el mercado</div>
+      </div>
+      <div class="reveal">
+        <div class="stat-num">800+</div>
+        <div class="stat-label">Productos disponibles</div>
+      </div>
+      <div class="reveal">
+        <div class="stat-num">98%</div>
+        <div class="stat-label">Índice de satisfacción</div>
+      </div>
     </div>
   </div>
 </section>
@@ -1790,6 +1809,18 @@
     if (heroInner) heroInner.style.transform = `translateY(${y * 0.3}px)`;
     if (heroBg) heroBg.style.transform = `translateY(${y * 0.15}px)`;
   }, { passive: true });
+
+  // Parallax zoom stats
+  const statsBg = document.getElementById('statsBg');
+  if (statsBg) {
+    window.addEventListener('scroll', () => {
+      const rect = statsBg.parentElement.getBoundingClientRect();
+      const viewH = window.innerHeight;
+      const progress = 1 - (rect.top + rect.height) / (viewH + rect.height);
+      const scale = 1 + progress * 0.2;
+      statsBg.style.transform = `scale(${scale})`;
+    }, { passive: true });
+  }
 
   // Parallax zoom divider
   const dividerImg = document.getElementById('parallaxDivider');
