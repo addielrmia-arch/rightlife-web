@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nosotros — Equipalo</title>
+  <meta name="description" content="Equipalo: equipamiento gastronómico y comercial en Tampico. Equipos de cocción, refrigeración, mobiliario en acero inoxidable y proyectos integrales." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,700;1,800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --blue-50:#eff6ff; --blue-100:#dbeafe; --blue-200:#bfdbfe; --blue-300:#93c5fd;
+      --blue-400:#60a5fa; --blue-500:#3b82f6; --blue-600:#2563eb; --blue-700:#1d4ed8;
+      --blue-800:#1e40af; --blue-900:#1e3a8a; --blue-950:#0a1233;
+      --gray-50:#f8fafc; --gray-100:#f1f5f9; --gray-300:#cbd5e1; --gray-500:#64748b;
+      --gray-700:#334155; --gray-900:#0f172a; --white:#fff;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: var(--gray-900); background: var(--white); -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%; height: 72px;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(30,64,175,0.08);
+      box-shadow: 0 2px 24px rgba(30,64,175,.08);
+    }
+    .nav-logo img { height: 40px; width: auto; object-fit: contain; }
+    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .nav-links a { color: var(--gray-700); font-weight: 500; font-size: .95rem; transition: color .2s; }
+    .nav-links a:hover { color: var(--blue-600); }
+    .nav-cta {
+      background: var(--blue-600); color: white !important;
+      padding: 10px 22px; border-radius: 50px; font-weight: 600;
+      transition: background .2s;
+    }
+    .nav-cta:hover { background: var(--blue-700); }
+
+    .page-hero {
+      padding: 140px 5% 80px;
+      background: linear-gradient(135deg, var(--blue-950) 0%, var(--blue-800) 100%);
+      text-align: center; color: white;
+    }
+    .page-hero .tag {
+      display: inline-block;
+      background: rgba(96,165,250,.15); border: 1px solid rgba(96,165,250,.3);
+      color: var(--blue-200);
+      padding: 6px 16px; border-radius: 50px;
+      font-size: .8rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: .5px;
+      margin-bottom: 20px;
+    }
+    .page-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      font-weight: 800; line-height: 1.15;
+      max-width: 880px; margin: 0 auto;
+    }
+
+    .content {
+      max-width: 880px; margin: 0 auto; padding: 80px 5%;
+    }
+    .content p { font-size: 1.05rem; color: var(--gray-700); line-height: 1.8; margin-bottom: 22px; }
+    .content h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      color: var(--blue-900);
+      margin: 48px 0 16px;
+    }
+    .content h3 {
+      font-size: 1.15rem; color: var(--blue-700); font-weight: 700;
+      margin-top: 20px; margin-bottom: 6px;
+    }
+    .content ul { padding-left: 0; list-style: none; margin-bottom: 22px; }
+    .content ul li {
+      position: relative; padding: 8px 0 8px 28px;
+      color: var(--gray-700); font-size: 1rem;
+    }
+    .content ul li::before {
+      content: '✓'; position: absolute; left: 0; top: 8px;
+      color: var(--blue-600); font-weight: 800;
+    }
+    .content .closing {
+      margin-top: 40px;
+      padding: 28px;
+      background: var(--blue-50);
+      border-left: 4px solid var(--blue-600);
+      border-radius: 8px;
+      font-size: 1.1rem;
+      color: var(--blue-900);
+      font-weight: 500;
+    }
+    .content .closing strong { color: var(--blue-700); }
+
+    .form-section {
+      background: var(--gray-50);
+      padding: 80px 5%;
+    }
+    .form-wrap {
+      max-width: 720px; margin: 0 auto;
+      background: white;
+      padding: 48px;
+      border-radius: 24px;
+      box-shadow: 0 20px 60px rgba(30,64,175,.08);
+    }
+    .form-header { text-align: center; margin-bottom: 36px; }
+    .form-header .tag {
+      display: inline-block;
+      background: var(--blue-100); color: var(--blue-700);
+      padding: 6px 16px; border-radius: 50px;
+      font-size: .8rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .5px;
+      margin-bottom: 14px;
+    }
+    .form-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem; color: var(--blue-900);
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+    .form-grid .full { grid-column: 1 / -1; }
+    .form-grid label {
+      display: block;
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--gray-700);
+      margin-bottom: 6px;
+    }
+    .form-grid input,
+    .form-grid select,
+    .form-grid textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      font-size: .95rem;
+      font-family: inherit;
+      background: white;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .form-grid input:focus,
+    .form-grid select:focus,
+    .form-grid textarea:focus {
+      outline: none;
+      border-color: var(--blue-500);
+      box-shadow: 0 0 0 3px rgba(59,130,246,.15);
+    }
+    .form-grid textarea { min-height: 120px; resize: vertical; }
+    .submit-btn {
+      grid-column: 1 / -1;
+      background: var(--blue-600);
+      color: white;
+      padding: 14px;
+      border: none;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: background .2s, transform .2s, box-shadow .2s;
+      box-shadow: 0 4px 16px rgba(37,99,235,.35);
+    }
+    .submit-btn:hover { background: var(--blue-700); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,99,235,.5); }
+
+    footer {
+      background: var(--blue-950);
+      color: rgba(255,255,255,.6);
+      padding: 32px 5%;
+      text-align: center;
+      font-size: .9rem;
+    }
+    footer a { color: var(--blue-300); }
+
+    .wa-float {
+      position: fixed; bottom: 24px; right: 24px;
+      width: 60px; height: 60px;
+      background: #25D366; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 6px 24px rgba(37,211,102,.45);
+      z-index: 999;
+      transition: transform .2s;
+    }
+    .wa-float:hover { transform: scale(1.08); }
+
+    @media (max-width: 700px) {
+      .nav-links { display: none; }
+      .form-wrap { padding: 28px 20px; }
+      .form-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="logo.png" alt="Equipalo" />
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#inicio">Inicio</a></li>
+    <li><a href="index.html#productos">Productos</a></li>
+    <li><a href="nosotros.html">Nosotros</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+    <li><a href="#contacto" class="nav-cta">Cotizar ahora</a></li>
+  </ul>
+</nav>
+
+<section class="page-hero">
+  <div class="tag">Nosotros</div>
+  <h1>Equipamos los negocios que alimentan a México</h1>
+</section>
+
+<section class="content">
+  <p>En <strong>Equipalo</strong> entendemos que detrás de cada restaurante, cafetería, panadería, bar o comedor industrial existe un sueño, una inversión y una visión de crecimiento.</p>
+
+  <p>Por eso nos dedicamos a brindar soluciones integrales en equipamiento para la industria gastronómica y comercial, ofreciendo equipos de cocción, refrigeración, cafetería, mobiliario en acero inoxidable, accesorios especializados y proyectos diseñados para optimizar cada espacio de trabajo.</p>
+
+  <p>Con sede en <strong>Tampico, Tamaulipas</strong>, trabajamos día a día para ayudar a emprendedores, chefs, restauranteros y empresarios a construir cocinas más eficientes, funcionales y rentables. Nuestro compromiso es ofrecer productos de calidad, asesoría especializada y soluciones adaptadas a las necesidades de cada cliente.</p>
+
+  <h2>Nuestra Misión</h2>
+  <p>Proporcionar equipos, mobiliario y soluciones profesionales que impulsen el éxito de negocios gastronómicos y comerciales, ofreciendo calidad, asesoría y atención personalizada en cada proyecto.</p>
+
+  <h2>Nuestra Visión</h2>
+  <p>Ser la empresa líder en equipamiento gastronómico del noreste de México, reconocida por la confianza de nuestros clientes, la calidad de nuestros productos y nuestra capacidad para desarrollar proyectos integrales que contribuyan al crecimiento de cada negocio.</p>
+
+  <h2>¿Qué hacemos?</h2>
+  <ul>
+    <li>Equipamiento para restaurantes</li>
+    <li>Equipamiento para cafeterías</li>
+    <li>Sistemas de refrigeración comercial</li>
+    <li>Equipos de cocción profesional</li>
+    <li>Fabricación de mobiliario en acero inoxidable</li>
+    <li>Proyectos especiales para cocinas industriales</li>
+    <li>Accesorios y utensilios especializados</li>
+    <li>Asesoría para apertura y expansión de negocios gastronómicos</li>
+  </ul>
+
+  <h2>¿Por qué elegir Equipalo?</h2>
+
+  <h3>Experiencia</h3>
+  <p>Conocemos las necesidades reales de la industria gastronómica y comercial.</p>
+
+  <h3>Soluciones integrales</h3>
+  <p>Desde un equipo individual hasta proyectos completos para cocinas profesionales.</p>
+
+  <h3>Atención personalizada</h3>
+  <p>Te ayudamos a seleccionar el equipamiento ideal según tu espacio, operación y presupuesto.</p>
+
+  <h3>Calidad y confianza</h3>
+  <p>Trabajamos con marcas reconocidas y productos diseñados para uso profesional.</p>
+
+  <div class="closing">
+    <strong>Construyamos tu próximo proyecto.</strong> Ya sea que estés iniciando un restaurante, renovando tu cocina o expandiendo tu operación, en Equipalo encontrarás un aliado comprometido con el crecimiento de tu negocio. Tu éxito comienza con el equipo correcto.
+  </div>
+</section>
+
+<section class="form-section" id="contacto">
+  <div class="form-wrap">
+    <div class="form-header">
+      <div class="tag">Contacto</div>
+      <h2>Solicita tu cotización</h2>
+    </div>
+    <form class="form-grid" onsubmit="event.preventDefault(); alert('Gracias, te contactaremos pronto.'); this.reset();">
+      <div>
+        <label>Nombre completo</label>
+        <input type="text" name="nombre" required />
+      </div>
+      <div>
+        <label>Empresa o negocio</label>
+        <input type="text" name="empresa" />
+      </div>
+      <div>
+        <label>Ciudad</label>
+        <input type="text" name="ciudad" />
+      </div>
+      <div>
+        <label>Teléfono</label>
+        <input type="tel" name="telefono" required />
+      </div>
+      <div class="full">
+        <label>Correo electrónico</label>
+        <input type="email" name="email" required />
+      </div>
+      <div class="full">
+        <label>Tipo de proyecto</label>
+        <select name="proyecto">
+          <option value="">Selecciona una opción</option>
+          <option>Restaurante</option>
+          <option>Cafetería</option>
+          <option>Bar</option>
+          <option>Panadería</option>
+          <option>Hotel</option>
+          <option>Comedor Industrial</option>
+          <option>Otro</option>
+        </select>
+      </div>
+      <div class="full">
+        <label>Mensaje</label>
+        <textarea name="mensaje" placeholder="Cuéntanos sobre tu proyecto..."></textarea>
+      </div>
+      <button type="submit" class="submit-btn">Solicitar Cotización</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  © 2026 Equipalo · Tampico, Tamaulipas · <a href="https://wa.me/528331558271">+52 833 155 8271</a>
+</footer>
+
+<a href="https://wa.me/528331558271?text=Hola%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20sus%20equipos" target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp">
+  <svg viewBox="0 0 32 32" width="32" height="32" fill="white"><path d="M16 .4C7.4.4.4 7.4.4 16c0 2.8.7 5.5 2.1 7.9L.3 31.6l7.9-2.1c2.3 1.3 5 2 7.7 2C24.6 31.6 31.6 24.6 31.6 16S24.6.4 16 .4zm0 28.5c-2.5 0-4.9-.7-7-1.9l-.5-.3-5.2 1.4 1.4-5.1-.3-.5c-1.3-2.1-2-4.6-2-7.1 0-7.5 6.1-13.6 13.6-13.6 7.5 0 13.6 6.1 13.6 13.6S23.5 28.9 16 28.9zm7.5-10.2c-.4-.2-2.4-1.2-2.8-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.2 1.5-.2.2-.4.3-.8.1-2.3-1.1-3.7-2-5.2-4.5-.4-.6.4-.6 1.1-2.1.1-.2.1-.4 0-.6-.1-.2-.9-2.2-1.3-3-.3-.7-.7-.6-.9-.7h-.8c-.3 0-.7.1-1.1.5s-1.5 1.5-1.5 3.5 1.5 4 1.7 4.3c.2.3 3 4.5 7.3 6.3 2.7 1.1 3.8 1.2 5.2 1 .8-.1 2.4-1 2.7-1.9.3-.9.3-1.7.2-1.9-.1-.2-.4-.3-.8-.4z"/></svg>
+</a>
+
+</body>
+</html>
