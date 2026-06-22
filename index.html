@@ -233,9 +233,19 @@
       color: var(--white);
       margin-bottom: 20px;
     }
-    .hero h1 em {
-      font-style: italic;
-      color: var(--blue-400);
+    .hero h1 em { font-style: italic; color: var(--blue-400); }
+    .hero h1 .accent {
+      color: var(--blue-300);
+      position: relative;
+      display: inline-block;
+    }
+    .hero h1 .accent::after {
+      content: '';
+      position: absolute;
+      left: 0; right: 0; bottom: -4px;
+      height: 4px;
+      background: var(--blue-400);
+      border-radius: 2px;
     }
 
     .hero-sub {
@@ -253,17 +263,20 @@
       justify-content: center;
     }
     .btn-primary {
-      background: var(--white);
-      color: var(--blue-700);
+      background: var(--blue-600);
+      color: var(--white);
       padding: 14px 28px;
       border-radius: 50px;
       font-size: 1rem;
       font-weight: 700;
       text-decoration: none;
-      transition: transform .2s, box-shadow .2s;
-      box-shadow: 0 4px 20px rgba(0,0,0,.2);
+      transition: transform .2s, box-shadow .2s, background .2s;
+      box-shadow: 0 4px 20px rgba(37,99,235,.4);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
     }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,.3); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(37,99,235,.6); background: var(--blue-700); }
 
     .btn-outline {
       background: transparent;
@@ -1061,15 +1074,14 @@
   </div>
   <div class="hero-inner">
     <div class="hero-content">
-      <img src="hero-logo.png" alt="Equipalo" class="hero-logo" />
-      <h1>La cocina de un <em>chef</em> comienza con el equipo correcto</h1>
-      <p class="hero-sub">Maquinaria profesional para restaurantes, hoteles y cocinas industriales. Calidad europea, precios competitivos.</p>
+      <h1>La cocina de un <span class="accent">chef</span> comienza con el equipo correcto</h1>
+      <p class="hero-sub">Más de <strong>500 cocinas equipadas</strong> en restaurantes, hoteles y cocinas industriales. Calidad europea, precios competitivos.</p>
       <div class="hero-btns">
-        <a href="#productos" class="btn-primary">Ver catálogo</a>
-        <a href="#contacto" class="btn-outline">
+        <a href="#contacto" class="btn-primary">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.1 15.1 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1C10.18 21 3 13.82 3 5a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57-.1.34-.02.74-.25 1.01l-2.2 2.21z"/></svg>
           Contactar asesor
         </a>
+        <a href="#productos" class="btn-outline">Ver catálogo</a>
       </div>
     </div>
 
