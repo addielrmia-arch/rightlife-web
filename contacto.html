@@ -212,10 +212,37 @@
     }
     .wa-float:hover { transform: scale(1.08); }
 
+    .nav-mobile-toggle {
+      display: none; cursor: pointer; background: none; border: none; padding: 8px;
+    }
+    .nav-mobile-toggle span {
+      display: block; width: 24px; height: 2px; background: white; margin: 5px 0; transition: .3s;
+    }
+    nav.scrolled .nav-mobile-toggle span { background: var(--gray-700); }
+    .nav-mobile-menu {
+      display: none; position: fixed; top: 72px; left: 0; right: 0;
+      background: rgba(255,255,255,.98); backdrop-filter: blur(16px);
+      padding: 20px 5%; box-shadow: 0 8px 32px rgba(0,0,0,.1); z-index: 99;
+      flex-direction: column;
+    }
+    .nav-mobile-menu.open { display: flex; }
+    .nav-mobile-menu a {
+      display: block; padding: 14px 0; font-size: 1rem; font-weight: 600;
+      color: var(--gray-900); text-decoration: none; border-bottom: 1px solid var(--gray-100);
+    }
+    .nav-mobile-menu a:last-child { border-bottom: none; }
     @media (max-width: 768px) {
       .nav-links { display: none; }
+      .nav-mobile-toggle { display: block; }
+      .page-hero { padding: 120px 5% 60px; }
+      .page-hero h1 { font-size: 1.8rem; }
       .contact-grid { grid-template-columns: 1fr; }
       .form-wrap { padding: 28px 20px; }
+    }
+    @media (max-width: 480px) {
+      .page-hero { padding: 110px 4% 48px; }
+      .page-hero h1 { font-size: 1.5rem; }
+      .contact-section { padding: 48px 4%; }
     }
   </style>
 </head>
@@ -231,7 +258,16 @@
     <li><a href="nosotros.html">Nosotros</a></li>
     <li><a href="contacto.html">Contacto</a></li>
   </ul>
+  <button class="nav-mobile-toggle" aria-label="Menú" onclick="document.getElementById('mobileMenu').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="nav-mobile-menu" id="mobileMenu">
+  <a href="index.html">Inicio</a>
+  <a href="index.html#productos">Productos</a>
+  <a href="nosotros.html">Nosotros</a>
+  <a href="contacto.html">Contacto</a>
+</div>
 
 <section class="page-hero">
   <h1>Hablemos de tu proyecto</h1>

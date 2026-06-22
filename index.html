@@ -1050,35 +1050,92 @@
     }
     .footer-bottom-links a:hover { color: var(--blue-400); }
 
+    /* ─── MOBILE MENU ─── */
+    .nav-mobile-menu {
+      display: none;
+      position: fixed;
+      top: 72px; left: 0; right: 0;
+      background: rgba(255,255,255,.98);
+      backdrop-filter: blur(16px);
+      padding: 20px 5%;
+      box-shadow: 0 8px 32px rgba(0,0,0,.1);
+      z-index: 99;
+      flex-direction: column;
+      gap: 0;
+    }
+    .nav-mobile-menu.open { display: flex; }
+    .nav-mobile-menu a {
+      display: block;
+      padding: 14px 0;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--gray-900);
+      text-decoration: none;
+      border-bottom: 1px solid var(--gray-100);
+    }
+    .nav-mobile-menu a:last-child { border-bottom: none; }
+    .nav-mobile-menu a:hover { color: var(--blue-600); }
+
     /* ─── RESPONSIVE ─── */
     @media (max-width: 1024px) {
-      .products-grid { grid-template-columns: repeat(2, 1fr); }
       .steps { grid-template-columns: repeat(2, 1fr); }
       .steps::before { display: none; }
-      .stats-inner { grid-template-columns: repeat(2, 1fr); }
+      .stats-inner { grid-template-columns: repeat(2, 1fr); gap: 32px 24px; }
       .footer-top { grid-template-columns: 1fr 1fr; }
+      .cat-grid { grid-template-columns: repeat(2, 1fr); }
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
+      .testi-grid { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 768px) {
-      .nav-links, .nav-cta { display: none; }
+      .nav-links { display: none; }
       .nav-mobile-toggle { display: block; }
-      .hero-inner { grid-template-columns: 1fr; text-align: center; }
-      .hero-visual { display: none; }
-      .hero-sub { max-width: 100%; }
-      .hero-btns { justify-content: center; }
-      .hero-stats { justify-content: center; }
-      .features-grid { grid-template-columns: 1fr; }
+      nav.scrolled .nav-mobile-toggle span,
+      .nav-mobile-toggle span { background: white; }
+      nav.scrolled .nav-mobile-toggle span { background: var(--gray-700); }
+      .hero-inner { text-align: center; padding: 80px 5% 60px; }
+      .hero h1 { font-size: clamp(1.8rem, 7vw, 2.6rem); }
+      .hero-sub { max-width: 100%; font-size: 1rem; }
+      .hero-btns { justify-content: center; flex-direction: column; align-items: center; }
+      .btn-primary, .btn-outline { width: 100%; max-width: 300px; justify-content: center; }
+      .hero-stats { gap: 24px; }
+      .hero-stat-num { font-size: 1.4rem; }
+      section { padding: 64px 5%; }
+      .section-title { font-size: clamp(1.6rem, 5vw, 2.2rem); }
+      .cat-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+      .cat-card { padding: 28px 20px; }
+      .trust-inner { gap: 20px; }
+      .trust-item { font-size: .8rem; }
+      .features-grid { grid-template-columns: 1fr; gap: 24px; }
       .testi-grid { grid-template-columns: 1fr; }
-      .cat-grid { grid-template-columns: 1fr 1fr; }
-      .cta-form { flex-direction: column; border-radius: 16px; }
-      .cta-form input, .cta-form button { border-radius: 12px; }
-      .footer-top { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr 1fr; gap: 24px; }
+      .stats { height: 280px; }
+      .stat-num { font-size: 2.2rem; }
+      .cta-form { flex-direction: column; }
+      .cta-form input, .cta-form button { border-radius: 50px; width: 100%; }
+      .cta-box { padding: 48px 24px; border-radius: 20px; }
+      .footer-top { grid-template-columns: 1fr; gap: 32px; }
       .footer-bottom { flex-direction: column; text-align: center; }
+      .carousel-btn { display: none; }
+      .parallax-divider { height: 280px; }
+      .cat-modal-products { grid-template-columns: 1fr; }
+      .cat-modal-hero { height: 160px; }
+      .cat-modal-body { padding: 20px; }
     }
     @media (max-width: 480px) {
-      section { padding: 64px 4%; }
-      .products-grid { grid-template-columns: 1fr; }
+      section { padding: 48px 4%; }
       .cat-grid { grid-template-columns: 1fr; }
-      .stats-inner { grid-template-columns: 1fr 1fr; }
+      .cat-card { padding: 32px 24px; }
+      .stats-inner { grid-template-columns: 1fr 1fr; gap: 24px 16px; }
+      .stat-num { font-size: 1.8rem; }
+      .stat-label { font-size: .8rem; }
+      .stats { height: 240px; }
+      .steps { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 1.7rem; }
+      .section-title { font-size: 1.5rem; }
+      .trust-bar { padding: 16px 4%; }
+      .trust-inner { flex-direction: column; gap: 12px; }
+      .footer-brand p { max-width: 100%; }
+      .parallax-divider { height: 200px; }
     }
 
     /* ─── SCROLL ANIMATIONS ─── */
@@ -1205,10 +1262,16 @@
     <li><a href="contacto.html">Contacto</a></li>
   </ul>
 
-  <button class="nav-mobile-toggle" aria-label="Menú">
+  <button class="nav-mobile-toggle" aria-label="Menú" onclick="document.getElementById('mobileMenu').classList.toggle('open')">
     <span></span><span></span><span></span>
   </button>
 </nav>
+<div class="nav-mobile-menu" id="mobileMenu">
+  <a href="#inicio" onclick="this.parentElement.classList.remove('open')">Inicio</a>
+  <a href="#productos" onclick="this.parentElement.classList.remove('open')">Productos</a>
+  <a href="nosotros.html">Nosotros</a>
+  <a href="contacto.html">Contacto</a>
+</div>
 
 <!-- ─── HERO ─── -->
 <section class="hero" id="inicio">
