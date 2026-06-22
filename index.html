@@ -932,6 +932,9 @@
     /* ─── FOOTER ─── */
     footer {
       background: var(--blue-950);
+      background-image:
+        repeating-linear-gradient(90deg, rgba(255,255,255,.02) 0px, rgba(255,255,255,.02) 1px, transparent 1px, transparent 60px),
+        repeating-linear-gradient(0deg, rgba(255,255,255,.015) 0px, rgba(255,255,255,.015) 1px, transparent 1px, transparent 60px);
       color: rgba(255,255,255,.6);
       padding: 64px 5% 32px;
     }
@@ -951,26 +954,40 @@
       margin-top: 16px;
       max-width: 280px;
     }
+    .footer-tagline {
+      display: block;
+      font-size: .82rem;
+      color: var(--blue-300);
+      font-weight: 500;
+      margin-top: 8px;
+      letter-spacing: .3px;
+    }
     .footer-socials {
       display: flex;
       gap: 10px;
       margin-top: 20px;
     }
     .social-btn {
-      width: 36px; height: 36px;
-      border-radius: 8px;
+      width: 40px; height: 40px;
+      border-radius: 10px;
       background: rgba(255,255,255,.08);
       display: flex; align-items: center; justify-content: center;
       text-decoration: none;
-      transition: background .2s;
+      transition: background .3s, transform .3s;
     }
-    .social-btn:hover { background: var(--blue-600); }
-    .social-btn svg { width: 16px; height: 16px; fill: rgba(255,255,255,.7); }
+    .social-btn:hover { transform: translateY(-3px); }
+    .social-btn[aria-label="Facebook"]:hover { background: #1877f2; }
+    .social-btn[aria-label="Instagram"]:hover { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+    .social-btn[aria-label="WhatsApp"]:hover { background: #25D366; }
+    .social-btn svg { width: 18px; height: 18px; fill: rgba(255,255,255,.7); transition: fill .3s; }
+    .social-btn:hover svg { fill: white; }
     .footer-col h4 {
-      font-size: .9rem;
-      font-weight: 700;
-      color: white;
-      margin-bottom: 16px;
+      font-size: .85rem;
+      font-weight: 800;
+      color: var(--blue-400);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 18px;
     }
     .footer-col ul { list-style: none; }
     .footer-col ul li { margin-bottom: 10px; }
@@ -980,9 +997,25 @@
       font-size: .88rem;
       transition: color .2s;
     }
-    .footer-col ul li a:hover { color: var(--blue-400); }
+    .footer-col ul li a:hover { color: var(--blue-300); }
+    .footer-contact-item {
+      display: flex; align-items: center; gap: 8px;
+      margin-bottom: 12px;
+    }
+    .footer-contact-item svg { width: 16px; height: 16px; fill: var(--blue-400); flex-shrink: 0; }
+    .footer-contact-item a {
+      color: rgba(255,255,255,.6);
+      font-size: .88rem;
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .footer-contact-item a:hover { color: var(--blue-300); }
+    .footer-contact-item span {
+      color: rgba(255,255,255,.45);
+      font-size: .85rem;
+    }
     .footer-bottom {
-      border-top: 1px solid rgba(255,255,255,.08);
+      border-top: 1px solid rgba(37,99,235,.2);
       padding-top: 28px;
       display: flex;
       align-items: center;
@@ -1597,8 +1630,9 @@
     <div class="footer-top">
       <div class="footer-brand">
         <a href="index.html" class="nav-logo" style="text-decoration:none;">
-          <img src="logo.png" alt="Equipalo" style="height:36px;width:auto;filter:brightness(0) invert(1);" />
+          <img src="logo.png" alt="Equipalo" style="height:44px;width:auto;filter:brightness(0) invert(1);" />
         </a>
+        <span class="footer-tagline">Soluciones y accesorios en gastronomía</span>
         <p>Equipamiento gastronómico y comercial en Tampico, Tamaulipas. Equipos de cocción, refrigeración, mobiliario en acero inoxidable y proyectos integrales.</p>
         <div class="footer-socials">
           <a href="https://www.facebook.com/equipalomx" target="_blank" rel="noopener" class="social-btn" aria-label="Facebook">
@@ -1633,13 +1667,22 @@
       </div>
       <div class="footer-col">
         <h4>Contacto</h4>
-        <ul>
-          <li><a href="tel:+528332170010">(833) 217 00 10</a></li>
-          <li><a href="https://wa.me/528331558271" target="_blank" rel="noopener">833 155 8271</a></li>
-          <li><a href="https://www.facebook.com/equipalomx" target="_blank" rel="noopener">Facebook</a></li>
-          <li><a href="https://www.instagram.com/equipalo/" target="_blank" rel="noopener">Instagram</a></li>
-          <li style="color:rgba(255,255,255,.5);font-size:.88rem;">Av. Ejército Mexicano #601, Col. Minerva, Tampico 89120</li>
-        </ul>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.1 15.1 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1C10.18 21 3 13.82 3 5a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57-.1.34-.02.74-.25 1.01l-2.2 2.21z"/></svg>
+          <a href="tel:+528332170010">(833) 217 00 10</a>
+        </div>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 32 32" style="fill:#25D366"><path d="M16 .4C7.4.4.4 7.4.4 16c0 2.8.7 5.5 2.1 7.9L.3 31.6l7.9-2.1c2.3 1.3 5 2 7.7 2C24.6 31.6 31.6 24.6 31.6 16S24.6.4 16 .4zm7.5 18.3c-.4-.2-2.4-1.2-2.8-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.2 1.5-.2.2-.4.3-.8.1-2.3-1.1-3.7-2-5.2-4.5-.4-.6.4-.6 1.1-2.1.1-.2.1-.4 0-.6-.1-.2-.9-2.2-1.3-3-.3-.7-.7-.6-.9-.7h-.8c-.3 0-.7.1-1.1.5s-1.5 1.5-1.5 3.5 1.5 4 1.7 4.3c.2.3 3 4.5 7.3 6.3 2.7 1.1 3.8 1.2 5.2 1 .8-.1 2.4-1 2.7-1.9.3-.9.3-1.7.2-1.9-.1-.2-.4-.3-.8-.4z"/></svg>
+          <a href="https://wa.me/528331558271" target="_blank" rel="noopener">833 155 8271</a>
+        </div>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
+          <span>Av. Ejército Mexicano #601, Col. Minerva, Tampico 89120</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm3.3 14.71L11 12.41V7h2v4.59l3.71 3.71-1.42 1.41z"/></svg>
+          <span>Lun - Vie: 9:00 - 18:00</span>
+        </div>
       </div>
     </div>
     <div class="footer-bottom">
