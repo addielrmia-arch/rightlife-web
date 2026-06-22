@@ -878,8 +878,8 @@
       bottom: -100px; left: -60px;
     }
     .cta-box h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 4vw, 3rem);
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(2rem, 4vw, 2.8rem);
       font-weight: 800;
       color: white;
       margin-bottom: 16px;
@@ -910,19 +910,20 @@
       font-family: 'Inter', sans-serif;
     }
     .cta-form button {
-      background: white;
-      color: var(--blue-700);
+      background: #f59e0b;
+      color: #1a1a1a;
       border: none;
-      padding: 14px 24px;
+      padding: 14px 28px;
       border-radius: 50px;
       font-size: .95rem;
-      font-weight: 700;
+      font-weight: 800;
       cursor: pointer;
       white-space: nowrap;
-      transition: transform .2s;
+      transition: transform .2s, background .2s, box-shadow .2s;
       font-family: 'Inter', sans-serif;
+      box-shadow: 0 4px 16px rgba(245,158,11,.4);
     }
-    .cta-form button:hover { transform: scale(1.03); }
+    .cta-form button:hover { transform: scale(1.05); background: #fbbf24; box-shadow: 0 6px 24px rgba(245,158,11,.55); }
 
     /* ─── FOOTER ─── */
     footer {
@@ -1577,8 +1578,9 @@
     <div class="cta-box reveal">
       <h2>¿Listo para equipar tu cocina?</h2>
       <p>Recibe una cotización personalizada en menos de 24 horas. Sin compromiso, sin costos ocultos.</p>
-      <form class="cta-form" onsubmit="return false;">
-        <input type="email" placeholder="Tu correo electrónico" />
+      <form class="cta-form" onsubmit="event.preventDefault(); alert('Gracias, te contactaremos pronto.'); this.reset();">
+        <input type="email" placeholder="Tu correo electrónico" required />
+        <input type="tel" placeholder="WhatsApp / Teléfono" />
         <button type="submit">Quiero mi cotización</button>
       </form>
     </div>
